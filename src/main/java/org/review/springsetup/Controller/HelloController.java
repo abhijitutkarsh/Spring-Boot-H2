@@ -1,6 +1,7 @@
 package org.review.springsetup.Controller;
 
 import jakarta.validation.Valid;
+import org.review.springsetup.Model.User;
 import org.review.springsetup.Service.UserService;
 import org.review.springsetup.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,15 @@ public class HelloController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto request)
+    public ResponseEntity<User> createUser(@Valid @RequestBody UserDto request)
     {
-        UserDto createdUser = userService.createUser(request);
+        User createdUser = userService.createUser(request);
         // ✅ UserService.createUser() MUST return UserDto
         return ResponseEntity.ok(createdUser);
     }
 
     @GetMapping("/all")
-    public List<UserDto> allData (){
+    public List<User> allData (){
         return userService.getAllUser();
     }
 }
